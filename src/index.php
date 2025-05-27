@@ -24,9 +24,14 @@ while ($row=$result->fetch_assoc()) {
     echo "<p>" . $row['content'] . "</p>";
     echo "<small>Writer : " . $row['username'] . " , " . $row['created_at'] . "</small>";
     if (isset($_SESSION['username']) && ($_SESSION['username'] == $row['username'] || $_SESSION['is_admin'])) {
+        echo "<form method='get' action='update.php'>";
+        echo "<input type='hidden' name='post_id' value='{$row['id']}'>";
+        echo "<button type='submit'>update</button>";
+        echo "</form>";
+        
         echo "<form method='post' action='delete.php'>";
         echo "<input type='hidden' name='post_id' value='{$row['id']}'>";
-        echo "<button type='submit'>삭제</button>";
+        echo "<button type='submit'>delete</button>";
         echo "</form>";
     }
     echo "</div>";

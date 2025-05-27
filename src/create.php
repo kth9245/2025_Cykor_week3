@@ -15,12 +15,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $stmt->bind_param("sss", $username, $title, $content);
 
     if ($stmt->execute()) {
-        echo "Success. <a href='index.php'>index</a>";
+        header("Location: index.php");
+        exit;
     } else {
         echo "Error : " . $stmt->error;
     }
-
-    exit;
 }
 ?>
 
